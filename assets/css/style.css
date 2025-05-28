@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*CAUTION: DON'T TRY TO UNDERSTAND IF YOU DON'T; 
+(Even the writer of code is yet to understand 
+what is on going here. hahaha*/
+
+/*
+DEFINITIONS
+  LM    ---> LIGHT MODE
+  DM    ---> DARK MODE
+  OF    ---> ON OFF
+  BG    ---> BACKGROUND
+  OTL   ---> OUTLINE
+  CLR   ---> COLOR
+  TXT   ---> TEXT
+  PRI   ---> PRIMARY
+  SEC   ---> SECONDARY
+  BDR   ---> BORDER
+  GRD   ---> GRADIENT
+*/
+/*
+font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+*/
+
+:root {
+  /*Dark Mode Color Set.*/
+  --clr-pri-grd-DM: linear-gradient(180deg, #040918 0%, #091540 100%);
+  --clr-txt-pri-DM: hsl(200, 60%, 99%);
+  --clr-txt-sec-DM: hsl(0, 0%, 78%);
+  --clr-txt-unknown-DM: hsl(0, 0%, 93%);
+  --clr-input-active-txt-DM: hsl(226, 25%, 17%);
+  --clr-bg-input-btns-DM: hsl(225, 23%, 24%);
+  --clr-bdr-input-btns-DM: hsla(226, 11%, 37%, .3);
+  --clr-bg-filter-btns-selected-DM: hsl(3, 86%, 64%);
+  --clr-bg-input-btns-active-DM: hsl(226, 11%, 37%);
+  --clr-otl-input-btns-active-DM: hsl(3, 86%, 64%);
+  --clr-bdr-active-all-DM: hsl(226, 25%, 17%);
+  --clr-bg-sect-article-DM: hsl(226, 25%, 17%);
+  --clr-bdr-sect-article-DM: hsla(226, 11%, 37%, .3);
+  --clr-bg-slider-off-DM: hsl(226, 11%, 37%);
+  --clr-bg-slider-on-DM: hsl(3, 86%, 64%);
+  --clr-bg-slider-OF-DM: hsl(200, 60%, 99%);
+  --clr-bg-topbar-DM: hsla(225, 23%, 24%, .6);
+  --clr-bg-theme-DM: hsl(225, 23%, 24%);
+  --clr-bdr-theme-toggle-DM: hsla(225, 23%, 24%, .6);
+  --box-shadow: 0 0px 5px 1px #091520;
+
+  /*Light Mode Color Set.*/
+  --clr-pri-grd-LM: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+  --clr-txt-pri-LM: hsl(226, 25%, 17%);
+  --clr-txt-sec-LM: hsl(225, 23%, 24%);
+  --clr-txt-unknown-LM: hsl(226, 25%, 17%);
+  --clr-input-active-txt-LM: hsl(200, 60%, 99%);
+  --clr-bg-input-btns-LM: hsl(200, 60%, 99%);
+  --clr-bdr-input-btns-LM: hsla(226, 11%, 37%, .2);
+  --clr-bg-filter-btns-selected-LM: hsl(3, 77%, 44%);
+  --clr-bg-input-btns-active-LM: hsl(0, 0%, 93%);
+  --clr-otl-input-btns-active-LM: hsl(3, 77%, 44%);
+  --clr-bdr-active-all-LM: hsl(200, 60%, 99%);
+  --clr-bg-sect-article-LM: hsl(200, 60%, 99%);
+  --clr-bdr-sect-article-LM: hsla(226, 11%, 37%, .2);   
+  --clr-bg-slider-off-LM: hsl(0, 0%, 78%);
+  --clr-bg-slider-on-LM: hsl(3, 77%, 44%);
+  --clr-bg-slider-OF-LM: hsl(200, 60%, 99%);
+  --clr-bg-topbar-LM: hsl(200, 60%, 99%);
+  --clr-bg-theme-LM: hsl(0, 0%, 93%);
+  --clr-bdr-theme-toggle-LM: hsl(200, 60%, 99%);
+
+  /*
+  - **Neutral 900**: `hsl(227, 75%, 14%)`
+- **Neutral 800**: `hsl(226, 25%, 17%)`
+- **Neutral 700**: `hsl(225, 23%, 24%)`
+- **Neutral 600**: `hsl(226, 11%, 37%)`
+- **Neutral 300**: `hsl(0, 0%, 78%)`
+- **Neutral 200**: `hsl(217, 61%, 90%)`
+- **Neutral 100**: `hsl(0, 0%, 93%)`
+- **Neutral 0**: `hsl(200, 60%, 99%)`
+
+### Red
+
+- **Red 400**: `hsl(3, 86%, 64%)`
+- **Red 500**: `hsl(3, 71%, 56%)`
+- **Red 700**: `hsl(3, 77%, 44%)`
+  */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
+  width: 100%;
+  min-height: 100vh;
+  background: var(--clr-pri-grd-DM);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1.2rem;
+}
+
+body.LM {
+  background: var(--clr-pri-grd-LM); 
+}
+
+/*----------MAIN CONTAINER STYLING-----------*/
+/*Note, all space or rather margin you see in 
+between each container comes from margin-bottom
+of the upper container. For flex containers 
+(column direction) the space comes from both gap
+and the above margin rule.*/
+main.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 35rem;
+}
+
+/*TopBar and extension toolbar stylings--------*/
+div.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--clr-bg-topbar-DM);
+  padding: .6rem .8rem;
+  border-radius: 1rem;
+  width: 100%;
+  position: sticky;
+  z-index:  1000;
+  top: 0rem;
+  margin-bottom: 2rem;
+  transition: .5s;
+}
+
+div.top-bar.LM {
+  background-color: var(--clr-bg-topbar-LM);
+  border: .1rem solid var(--clr-bdr-sect-article-LM);
+  box-shadow: 0 .2rem .5rem var(--clr-bdr-sect-article-LM);
+}
+
+img.logo {
+  height: 3.3rem;
+}
+
+div.theme-toggle {
+  background-color: var(--clr-bg-theme-DM);
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  display: flex;
+  place-items: center; 
+  border: .2rem solid var(--clr-bdr-theme-toggle-DM);
+  transition: .5s;
+}
+
+div.theme-toggle.LM {
+  background-color: var(--clr-bg-theme-LM);
+  border: .2rem solid var(--clr-bdr-theme-toggle-LM);
+}
+
+img.theme {
+  height: 2rem;
+  width: 2rem;
+}
+
+/*Extension toolbar--------------------------*/
+div.extension-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+div.extension-toolbar h2 {
+  font-size: 2.6rem;
+  color: var(--clr-txt-pri-DM);
+  margin-bottom: .5rem;
+  transition: .5s;
+}
+
+div.extension-toolbar h2.LM {
+  color: var(--clr-txt-pri-LM);
+}
+
+
+div.extension-toolbar-filters {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+}
+
+label.filter {
+  background-color: var(--clr-bg-input-btns-DM);
+  border: .2rem solid var(--clr-bdr-input-btns-DM);
+  padding: .7rem 1.5rem;
+  border-radius: 2rem;
+  color: var(--clr-txt-unknown-DM);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+label.filter.LM {
+  background-color: var(--clr-bg-input-btns-LM);
+  border-color: var(--clr-bdr-input-btns-LM);
+  color: var(--clr-txt-unknown-LM);
+  transition: .5s;
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--clr-bg-filter-btns-selected-DM);
+  color: var(--clr-input-active-txt-DM);
+  transition: .5s;
+}
+
+input[type="radio"]:checked + label.LM {
+  background-color: var(--clr-bg-filter-btns-selected-LM);
+  color: var(--clr-input-active-txt-LM);
+}
+
+/*---------EXTENSION CONTAINER STYLING------*/
+section.extensions {
+  display: grid;
+  gap: .8rem;
+}
+
+article.extension {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: var(--clr-bg-sect-article-DM);
+  border: .2rem solid var(--clr-bdr-sect-article-DM);
+  border-radius: 2rem;
+  gap: 2rem;
+  height: 17rem;
+  transition: .5s;
+}
+
+article.extension.LM {
+  background-color: var(--clr-bg-sect-article-LM);
+  border-color: var(--clr-bdr-sect-article-LM);
+}
+
+div.icon-nDescript {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  color: var(--clr-txt-unknown-DM);
+  transition: .5s;
+}
+
+div.icon-nDescript.LM {
+  color: var(--clr-txt-unknown-LM);
+}
+
+div.icon-nDescript img.extension-icon {
+  width: 5rem;
+}
+
+div.descript {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-top: .3rem;
+}
+
+div.descript p {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--clr-txt-sec-DM);
+  transition: .5s;
+}
+
+div.descript p.LM {
+  color: var(--clr-txt-sec-LM);
+}
+
+/*Extension action bar-------------------*/
+div.no-extension {
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-align: center;
+  grid-column: span 3;
+  margin: -1rem 0 3rem;
+  color: var(--clr-txt-sec-DM);
+  transition: .5s;
+}
+
+div.no-extension.LM {
+  color: var(--clr-txt-sec-LM);
+}
+
+div.extension-item-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button.remove-extension {
+  padding: .7rem 1.2rem;
+  border-radius: 3rem;
+  border: .2rem solid var(--clr-bdr-sect-article-DM);
+  background-color: var(--clr-bg-sect-article-DM);
+  color: var(--clr-txt-unknown-DM);
+  font-size: 1.3rem;
+  font-weight: 500;
+  transition: .5s;
+}
+
+button.remove-extension.LM {
+  border-color: --clr-bdr-sect-article-LM;
+  background-color: var(--clr-bg-sect-article-LM);
+  color: var(--clr-txt-unknown-LM);
+}
+
+label.toggle-active-state {
+  position: relative;
+  width: 3.4rem;
+  height: 2.1rem;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  border: .2rem solid var(--clr-bg-sect-article-DM);
+  outline: .2rem solid var(--clr-bg-sect-article-DM);
+  transition: .5s;
+}
+
+label.toggle-active-state.LM {
+  border-color: var(--clr-bg-sect-article-LM);
+  outline-color: var(--clr-bg-sect-article-LM);
+}
+
+label.toggle-active-state 
+span.toggle-switch_slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--clr-bg-slider-off-DM);
+  border-radius: 5rem;
+  transition: .5s;
+}
+
+label.toggle-active-state 
+span.toggle-switch_slider.LM {
+  background-color: var(--clr-bg-slider-off-LM);
+}
+
+label.toggle-active-state 
+span.toggle-switch_slider:before {
+  position: absolute;
+  content: "";
+  width: 1.3rem;
+  height: 1.3rem;
+  left: .2rem;
+  bottom: .2rem;
+  background-color: var(--clr-bg-slider-OF-DM);
+  border-radius: 50%;
+  transition: .3s;
+}
+
+label.toggle-active-state 
+span.toggle-switch_slider.LM:before {
+  background-color: var(--clr-bg-slider-OF-LM);
+}
+
+input[type="checkbox"]:checked + 
+span.toggle-switch_slider {
+  background-color: var(--clr-bg-slider-on-DM);
+  transition: .5s;
+}
+
+input[type="checkbox"]:checked + 
+span.toggle-switch_slider.LM {
+  background-color: var(--clr-bg-slider-on-LM);
+}
+
+input[type="checkbox"]:checked + 
+span.toggle-switch_slider:before {
+  transform: translateX(100%);
+}
+
+
+/*------COMPONENTS-------*/
+.hidden, input[type="checkbox"] {
+  display: none !important;
+}
+
+button:hover, label:hover, 
+div.theme-toggle:hover {
+  cursor: pointer;
+  outline: .2rem solid var(--clr-otl-input-btns-active-DM);
+  border: .2rem solid var(--clr-bdr-active-all-DM);
+  background-color: var(--clr-bg-input-btns-active-DM);
+  transition: .5s;
+}
+
+button.LM:hover, 
+div.theme-toggle.LM:hover,
+label.LM:hover {
+  cursor: pointer;
+  outline: .2rem solid var(--clr-otl-input-btns-active-LM);
+  border: .2rem solid var(--clr-bdr-active-all-LM);
+  background-color: var(--clr-bg-input-btns-active-LM);
+}
+
+label.filter, article.extension {
+  /*box-shadow: var(--box-shadow);*/
+}
+
+footer.attribution { 
+  font-size: 1.1rem; 
+  text-align: center; 
+  color: var(--clr-txt-sec-DM);
+  transition: .5s;
+}
+
+footer.attribution.LM { 
+  font-size: 1.1rem; 
+  text-align: center; 
+  color: var(--clr-txt-sec-LM);
+}
+
+footer.attribution a { 
+  color: var(--clr-txt-unknown-DM); 
+  transition: .5s;
+}
+
+footer.attribution a.LM { 
+  color: var(--clr-txt-unknown-LM); 
+}
+
+
+/*------RESPONSIVE DESIGN-------*/
+@media (min-width: 700px) {
+  body {
+    padding: 2rem 4rem;
+  }
+
+  main.container {
+    max-width: 100%;
+  }
+
+  div.top-bar {
+    margin-bottom: 3rem;
+  }
+
+  div.extension-toolbar {
+    width: 100%;
+    flex-direction: row;
+    gap: unset;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  div.extension-toolbar h2 {
+    margin: 0;
+    line-height: 1;
+  }
+
+  section.extensions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  section.extensions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  body {
+    padding: 3rem 6rem;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  body {
+    padding: 3rem 18rem;
+  }
+}

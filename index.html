@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+ <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+ <link rel="stylesheet" href="assets/css/style.css">
+ <link rel="stylesheet" href="assets/css/normalize.css">
+ 
+ <title>Frontend Mentor | Browser extensions manager UI</title>
+
+</head>
+<body>
+ <main class="container">
+  <div class="top-bar">
+   <img src="assets/images/logo-dark.svg" alt="EXTENSION" class="logo hidden">
+   <img src="assets/images/logo-light.svg" alt="EXTENSION" class="logo">
+   <div class="theme-toggle">
+    <img src="assets/images/icon-sun.svg" alt="LIGHT MODE" class="theme">
+    <img src="assets/images/icon-moon.svg" alt="DARK MODE" class="theme hidden">
+   </div>
+  </div>
+
+
+  <div class="extension-toolbar">
+   <h2>Extensions List</h2>
+   <div class="extension-toolbar-filters">
+    <input type="radio" name="filter" value="all" class="hidden" id="filter-all" checked>
+    <label for="filter-all" class="filter">
+     <span>All</span>
+    </label>
+
+    <input type="radio" name="filter" value="active" class="hidden" id="filter-active">
+    <label for="filter-active" class="filter">
+     <span>Active</span>
+    </label>
+
+    <input type="radio" name="filter" value="inactive" class="hidden" id="filter-inactive">
+    <label for="filter-inactive" class="filter">
+     <span>Inactive</span>
+    </label>
+   </div>
+  </div>
+
+  <section class="extensions">
+    <div class="no-extension hidden">No extension available at the moment.</div>
+  </section>
+ </main>
+
+ <footer class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+  Coded by <a href="https://github.com/AJsem" target="_blank">JxGrim</a>.
+ </footer>
+ <script src="assets/script/dataFetch.js" defer></script>
+ <script src="assets/script/script.js" defer></script>
+</body>
+</html>
