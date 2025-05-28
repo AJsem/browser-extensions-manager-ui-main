@@ -32,7 +32,7 @@ window.onload = () => {
 
 	async function fetchDataUpload () {
 		try {
-				const res = await fetch('../data.json');
+				const res = await fetch('../../data.json');
 				if(res.ok === false) {
 					throw new Error(`HTTP error! status: ${res.status}`);
 				} else {

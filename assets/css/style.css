@@ -249,7 +249,7 @@ article.extension {
   border: .2rem solid var(--clr-bdr-sect-article-DM);
   border-radius: 2rem;
   gap: 2rem;
-  height: 17rem;
+  /*height: 17rem;*/
   transition: .5s;
 }
 

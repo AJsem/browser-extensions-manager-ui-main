@@ -5,6 +5,8 @@ LDMT ---> Light Dark Mode Toggle*/
 
 /*GLOBAL VARIABLES PHASE 1*/
 let isDataLoaded = false;
+let isAll = true;
+let isActive = false;
 const themeToggle = document.querySelector("div.theme-toggle");
 const themeIcon = document.querySelectorAll("img.theme");
 const themeLogo = document.querySelectorAll("img.logo");
@@ -46,8 +48,8 @@ const LDMT_Callback_main = () => LDMT_Callback(allElementsList, themeIcon, theme
 
 function LDMT (themeButton, themeIcon, themeLogo) {
 	const elementArrayList = [ 
-		document.querySelector("body"),
-		document.querySelectorAll("div"),
+	  document.querySelector("body"),
+	  document.querySelectorAll("div"),
 	  document.querySelector("main"),
 	  document.querySelectorAll("h2"),
 	  document.querySelectorAll("h4"),
@@ -89,6 +91,40 @@ function removeExtension() {
 
 }
 
+function toggleActiveState() {
+	const extensionsList = document.querySelectorAll("article.extension");
+	if (extensionsList.length !== undefined) {
+		extensionsList.forEach(extension => {
+			extension.querySelector("label.toggle-active-state").addEventListener("click", () => {
+				setTimeout(() => {
+					const inactive = (!isAll && !isActive) ? true : false;
+					const checkBox = extension.querySelector("input[name='toggleActiveState']");
+					if (checkBox.checked && inactive) {
+					   extension.classList.add("hidden");
+					} else if (!checkBox.checked && isActive) {
+					   extension.classList.add("hidden");
+					}
+					emptyContainerNotif(allExtensions);
+				}, 500);
+			});
+		});
+	} else {
+			extensionsList.querySelector("label.toggle-active-state").addEventListener("click", () => {
+				setTimeout(() => {
+					const inactive = (!isAll && !isActive) ? true : false;
+					const checkBox = extensionsList.querySelector("input[name='toggleActiveState']");
+					if (checkBox.checked && inactive) {
+					   extensionsList.classList.add("hidden");
+					} else if (!checkBox.checked && isActive) {
+					   extensionsList.classList.add("hidden");
+					}
+					emptyContainerNotif(allExtensions);
+				}, 500);
+					
+			});
+	}
+}
+
 // NO EXTENSION DISPLAY MESSAGE FUNCTION
 function emptyContainerNotif(allExtensions) {
 	let check = true;
@@ -112,6 +148,7 @@ function emptyContainerNotif(allExtensions) {
 
 /*EXTENSION FILTER FUNCTIONS*/
 function extensionFilterAll () {
+	isAll = true; isActive = false;
 	const extensions = allElementsList[10];
 	if (extensions.length !== undefined) {
 		extensions.forEach(extension => {
@@ -124,6 +161,7 @@ function extensionFilterAll () {
 }
 
 function extensionFilterActive () {
+	isAll = false; isActive = true;
 	const extensions = allElementsList[10];
 	if (extensions.length !== undefined) {
 		extensions.forEach(extension => {
@@ -146,6 +184,7 @@ function extensionFilterActive () {
 }
 
 function extensionFilterInactive () {
+	isAll = false; isActive = false;
 	const extensions = allElementsList[10];
 	if (extensions.length !== undefined) {
 		extensions.forEach(extension => {
@@ -181,11 +220,12 @@ function waitForDomLoad() {
 
 async function callFuctions() {
 	await waitForDomLoad();
+		allExtensions = document.querySelectorAll("article.extension");
 		removeExtension();
 		LDMT_deactivate(themeToggle);
 		LDMT(themeToggle, themeIcon, themeLogo);
-		allExtensions = document.querySelectorAll("article.extension");
 		emptyContainerNotif(allExtensions);
+		toggleActiveState()
 		extensionFiltersLabel.all.onclick = extensionFilterAll;
 		extensionFiltersLabel.active.onclick = extensionFilterActive;
 		extensionFiltersLabel.inactive.onclick = extensionFilterInactive;
